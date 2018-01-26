@@ -8,7 +8,8 @@
     "test": "yarn build && run-p test:*",
     "test:flow": "flow",
     "test:ts": "tsc --noEmit test/typescript.ts && ts-node test/typescript.ts",
-    "test:all": "nyc babel-node test/index",
+    "test:all": "nyc -r text -r lcov babel-node test/index",
+    "codecov": "codecov",
     "build": "babel src -d lib"
   },
   "devDependencies": {
@@ -17,6 +18,7 @@
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-flow": "^6.23.0",
+    "codecov": "^3.0.0",
     "flow-bin": "^0.64.0",
     "npm-run-all": "^4.1.2",
     "nyc": "^11.4.1",
