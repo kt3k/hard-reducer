@@ -1,6 +1,6 @@
 /* @flow */
 import assert from 'assert'
-import { buildActionCreator, createReducer } from '../'
+import { buildActionCreator, createReducer } from '../src'
 import { combineReducers } from 'redux'
 
 // type and initialState

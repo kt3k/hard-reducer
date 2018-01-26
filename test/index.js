@@ -1,5 +1,6 @@
-/* @flow */
-import './error'
-import './flow'
-import './with-redux'
-import './with-promise'
+require('babel-register')
+require('babel-polyfill')
+require('./error')
+require('./flow')
+require('./with-redux')
+require('./with-promise')

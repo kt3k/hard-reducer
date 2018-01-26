@@ -1,0 +1,40 @@
+/* @flow */
+
+export type Action<T> = {
+  type: string,
+  payload: T
+}
+
+export type ActionCreator<Input, Payload> = Input => Action<Payload>
+
+export type Reducer<State> = {
+  (State, Action<any>): State,
+  get: () => Reducer<State>,
+  case<Input, Payload>(
+    ActionCreator<Input, Payload> | string,
+    (State, Payload) => State
+  ): Reducer<State>,
+  catch<Input, Payload>(
+    ActionCreator<Input, Payload>,
+    (State, Error) => State
+  ): Reducer<State>,
+  _((State, Action<*>) => State): Reducer<State>
+}
+
+declare module.exports: {
+  buildActionCreator: (
+    ?{ prefix?: string }
+  ) => {
+    createAction<Input, Payload>(
+      t?: string | void,
+      fn?: (Input) => Payload
+    ): ActionCreator<Input, Payload>,
+    // createAction<Input, Payload>(t: string): ActionCreator<void, void>,
+    // createSimpleAction(t: string): ActionCreator<void, void>,
+    createPromiseAction<Input, Payload>(
+      t?: string | void,
+      fn: (Input) => Promise<Payload>
+    ): ActionCreator<Input, Payload>
+  },
+  createReducer: <T>(T) => Reducer<T>
+}

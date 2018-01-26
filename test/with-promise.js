@@ -1,7 +1,7 @@
 /* @flow */
 import reduxPromise from 'redux-promise'
 import { applyMiddleware, createStore } from 'redux'
-import { createReducer, buildActionCreator } from '../'
+import { createReducer, buildActionCreator } from '../src'
 
 const { createPromiseAction } = buildActionCreator()
 
